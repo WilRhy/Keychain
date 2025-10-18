@@ -1,35 +1,29 @@
-import { encryptVault, decryptVault } from "./vault.js";
-import { saveVault, loadVault } from "./storage.js";
+import { encryptData, decryptData } from "./crypto.js";
 
-let vaultData = [];
-let masterPassword = "";
-
-// UI elements
 const setup = document.getElementById("setup");
 const login = document.getElementById("login");
 const vault = document.getElementById("vault");
 const entries = document.getElementById("entries");
 
+let masterPassword = "";
+let vaultData = [];
+
 window.onload = async () => {
-  const existing = await loadVault();
-  if (existing) {
-    // Vault exists → show login screen
-    setup.hidden = true;
+  const stored = localStorage.getItem("vault");
+  if (stored) {
     login.hidden = false;
   } else {
-    // First time → show setup screen
     setup.hidden = false;
-    login.hidden = true;
   }
 };
 
 // Create new vault
 document.getElementById("create").onclick = async () => {
-  const pass1 = document.getElementById("new-master").value.trim();
-  const pass2 = document.getElementById("confirm-master").value.trim();
+  const pass1 = document.getElementById("new-master").value;
+  const pass2 = document.getElementById("confirm-master").value;
 
-  if (!pass1 || pass1.length < 8) {
-    alert("Master password must be at least 8 characters.");
+  if (pass1.length < 8) {
+    alert("Password must be at least 8 characters.");
     return;
   }
   if (pass1 !== pass2) {
@@ -39,38 +33,31 @@ document.getElementById("create").onclick = async () => {
 
   masterPassword = pass1;
   vaultData = [];
-  const encrypted = await encryptVault(vaultData, masterPassword);
-  await saveVault(encrypted);
+  const encrypted = await encryptData(vaultData, masterPassword);
+  localStorage.setItem("vault", JSON.stringify(encrypted));
 
-  alert("Vault created! Use your master password to unlock next time.");
-
+  alert("Vault created!");
   setup.hidden = true;
   login.hidden = false;
 };
 
 // Unlock existing vault
 document.getElementById("unlock").onclick = async () => {
-  masterPassword = document.getElementById("master").value.trim();
-  const saved = await loadVault();
-
-  if (!saved) {
-    alert("No vault found. Please create one first.");
-    return;
-  }
+  const stored = JSON.parse(localStorage.getItem("vault"));
+  const password = document.getElementById("master").value;
 
   try {
-    vaultData = await decryptVault(saved, masterPassword);
+    vaultData = await decryptData(stored, password);
+    masterPassword = password;
+    login.hidden = true;
+    vault.hidden = false;
+    render();
   } catch {
     alert("Incorrect master password.");
-    return;
   }
-
-  login.hidden = true;
-  vault.hidden = false;
-  render();
 };
 
-// Add new password entry
+// Add new entry
 document.getElementById("add").onclick = async () => {
   const site = prompt("Website:");
   const user = prompt("Username:");
@@ -78,17 +65,17 @@ document.getElementById("add").onclick = async () => {
   if (!site || !user || !pass) return;
 
   vaultData.push({ site, user, pass });
-  const encrypted = await encryptVault(vaultData, masterPassword);
-  await saveVault(encrypted);
+  const encrypted = await encryptData(vaultData, masterPassword);
+  localStorage.setItem("vault", JSON.stringify(encrypted));
   render();
 };
 
+// Render vault entries
 function render() {
   entries.innerHTML = "";
   vaultData.forEach(({ site, user, pass }) => {
     const div = document.createElement("div");
-    div.innerHTML = `<strong>${site}</strong><span>${user}</span>`;
-    div.title = `Password: ${pass}`;
+    div.innerHTML = `<strong>${site}</strong><br>${user} — <em>${pass}</em>`;
     entries.appendChild(div);
   });
 }
