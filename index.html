@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keychain</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
+  <div class="container">
     <h1>🔐 Keychain</h1>
 
-    <!-- Create Vault Section -->
+    <!-- Setup (first time only) -->
     <section id="setup" hidden>
-      <h2>Create Master Password</h2>
-      <p>This will protect all your saved passwords. Don’t forget it!</p>
-      <input id="new-master" type="password" placeholder="Create Master Password" />
-      <input id="confirm-master" type="password" placeholder="Confirm Master Password" />
+      <h2>Create a Master Password</h2>
+      <p>This password unlocks all of your saved credentials. Don’t forget it — it cannot be recovered.</p>
+      <input type="password" id="new-master" placeholder="Enter master password">
+      <input type="password" id="confirm-master" placeholder="Confirm master password">
       <button id="create">Create Vault</button>
     </section>
 
-    <!-- Unlock Vault Section -->
+    <!-- Login -->
     <section id="login" hidden>
       <h2>Unlock Your Vault</h2>
-      <input id="master" type="password" placeholder="Enter Master Password" />
+      <input type="password" id="master" placeholder="Enter master password">
       <button id="unlock">Unlock</button>
-      <p id="forgot-tip">Forgot your password? Your data is securely encrypted and cannot be recovered without it.</p>
     </section>
 
-    <!-- Vault Section -->
+    <!-- Vault -->
     <section id="vault" hidden>
-      <div class="vault-header">
-        <h2>Your Saved Passwords</h2>
-        <button id="add">＋ Add Entry</button>
-      </div>
+      <h2>Your Vault</h2>
       <div id="entries"></div>
+      <button id="add">Add Entry</button>
     </section>
-  </main>
+  </div>
 
   <script type="module" src="script.js"></script>
 </body>
