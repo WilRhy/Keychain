@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Keychain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>🔐 Keychain</h1>
+
+    <section id="login">
+      <input id="master" type="password" placeholder="Enter Master Password" />
+      <button id="unlock">Unlock</button>
+    </section>
+
+    <section id="vault" hidden>
+      <button id="add">＋ Add Entry</button>
+      <div id="entries"></div>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
