@@ -1,6 +1,11 @@
 # Keychain
 Keychain is a password manager to separate passwords from Google Password Manager so it won't be all in one place for hackers to find.
 
+# Latest version:
+Alpha 1.0.1
+This will change but it is not exactly secure at the moment.
+Instructions will also change from being hosted on your computer to being hosted onto a website like a GitHub Pages without or with a domain.
+
 # How to set up Keychain (Windows 8.1+)
 1. Click Code and click download zip and receive Keychain-main.zip
 2. Open File Explorer, find the zip, and extract all.
