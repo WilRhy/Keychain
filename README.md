@@ -20,3 +20,5 @@ Instructions will also change from being hosted on your computer to being hosted
 9. Login with the master password (and we recommend writing this down on a notepad away from your webcam).
 10. Add your entries/passwords.
 11. Enjoy and be safe!
+#
+If you close the Command Prompt, the localhost website will shut down and you will have to redo the instructions from step 5. You will not be able to change your master password in this current version.
