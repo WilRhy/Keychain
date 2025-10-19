@@ -10,20 +10,28 @@
   <div class="container">
     <h1>🔐 Keychain</h1>
 
-    <!-- Setup (first time only) -->
+    <!-- Setup -->
     <section id="setup" hidden>
-      <h2>Create a Master Password</h2>
-      <p>This password unlocks all of your saved credentials. Don’t forget it — it cannot be recovered.</p>
-      <input type="password" id="new-master" placeholder="Enter master password">
-      <input type="password" id="confirm-master" placeholder="Confirm master password">
+      <h2>Create Master Password</h2>
+      <p>Protects all your saved passwords. Cannot be recovered if lost.</p>
+      <div class="password-wrapper">
+        <input type="password" id="new-master" placeholder="Enter master password">
+        <button type="button" id="toggle-master">👁️</button>
+      </div>
+      <div class="password-wrapper">
+        <input type="password" id="confirm-master" placeholder="Confirm password">
+        <button type="button" id="toggle-confirm">👁️</button>
+      </div>
       <button id="create">Create Vault</button>
+      <button id="register-bio" hidden>Enable Biometric Unlock</button>
     </section>
 
-    <!-- Login -->
+    <!-- Unlock -->
     <section id="login" hidden>
-      <h2>Unlock Your Vault</h2>
+      <h2>Unlock Vault</h2>
       <input type="password" id="master" placeholder="Enter master password">
       <button id="unlock">Unlock</button>
+      <button id="bio-unlock" hidden>Unlock with Biometrics</button>
     </section>
 
     <!-- Vault -->
@@ -31,6 +39,7 @@
       <h2>Your Vault</h2>
       <div id="entries"></div>
       <button id="add">Add Entry</button>
+      <button id="lock">Lock Vault</button>
     </section>
   </div>
 
