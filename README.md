@@ -3,7 +3,9 @@ Keychain is a password manager to separate passwords from Google Password Manage
 
 # Latest version:
 Alpha 1.0.1
+#
 This will change but it is not exactly secure at the moment.
+#
 Instructions will also change from being hosted on your computer to being hosted onto a website like a GitHub Pages without or with a domain.
 
 # How to set up Keychain (Windows 8.1+)
