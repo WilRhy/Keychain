@@ -8,7 +8,7 @@ This will change but it is not exactly secure at the moment.
 #
 Instructions will also change from being hosted on your computer to being hosted onto a website like a GitHub Pages without or with a domain.
 
-# How to set up Keychain (Windows 8.1+)
+# How to set up Keychain Alpha versions (Windows 8.1+)
 1. Click Code and click download zip and receive Keychain-main.zip
 2. Open File Explorer, find the zip, and extract all.
 3. Then open the folders to find the files.
