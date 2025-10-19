@@ -13,18 +13,16 @@ body {
   background: #1e1e1e;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  width: 340px;
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 1rem;
-}
+h1 { margin-bottom: 1rem; }
 
 input {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: calc(100% - 50px);
   margin: 0.5rem 0;
   padding: 0.6rem;
   border: none;
@@ -32,8 +30,7 @@ input {
 }
 
 button {
-  width: 100%;
-  padding: 0.7rem;
+  padding: 0.6rem;
   margin-top: 0.5rem;
   background: #3a86ff;
   border: none;
@@ -43,8 +40,12 @@ button {
   font-weight: bold;
 }
 
-button:hover {
-  background: #265df2;
+button:hover { background: #265df2; }
+
+.password-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #entries div {
@@ -53,4 +54,13 @@ button:hover {
   padding: 0.7rem;
   border-radius: 8px;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-buttons button {
+  margin-left: 4px;
+  font-size: 0.8rem;
+  padding: 0.3rem;
 }
